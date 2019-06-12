@@ -23,4 +23,5 @@ h1 {
 .nav-bar div:hover {
   color: black;
   background-color: #e6e6e6;
+  cursor: pointer;
 }
