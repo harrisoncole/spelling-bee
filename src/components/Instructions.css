@@ -23,11 +23,13 @@ h3 {
   margin-left: 10px;
 }
 .instructions-container {
+  z-index: 1;
+  margin-top: 20px;
   position: fixed;
   bottom: 250;
   right: -10;
-  opacity: 1;
   background-color: white;
+  opacity: 1;
   width: 30%;
   border: 1px solid #e6e6e6;
   border-radius: 5px;
