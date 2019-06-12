@@ -1,0 +1,26 @@
+.dim {
+  opacity: 0.2;
+}
+
+h1 {
+  padding: 20px 0;
+  margin-left: 5%;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #959595;
+  border-bottom: 1px solid #959595;
+}
+
+.nav-bar div {
+  color: #959595;
+  margin: 0 6%;
+  padding: 20px 8px;
+}
+
+.nav-bar div:hover {
+  color: black;
+  background-color: #e6e6e6;
+}
