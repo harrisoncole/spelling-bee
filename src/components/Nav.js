@@ -1,4 +1,5 @@
 import React from 'react';
+import { Instructions } from './index';
 import './Nav.css';
 
 const Nav = ({ displayInstructions, setDisplayInstructions }) => {
@@ -11,6 +12,9 @@ const Nav = ({ displayInstructions, setDisplayInstructions }) => {
         </div>
         <div>Answers</div>
       </div>
+      {displayInstructions && (
+        <Instructions setDisplayInstructions={setDisplayInstructions} />
+      )}
     </div>
   );
 };

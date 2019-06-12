@@ -14,10 +14,20 @@ h3 {
   padding: 5px;
 }
 
+.close:hover {
+  cursor: pointer;
+  color: black;
+}
+
 .ins-header {
   margin-left: 10px;
 }
 .instructions-container {
+  position: fixed;
+  bottom: 250;
+  right: -10;
+  opacity: 1;
+  background-color: white;
   width: 30%;
   border: 1px solid #e6e6e6;
   border-radius: 5px;

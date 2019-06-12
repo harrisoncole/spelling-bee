@@ -1,11 +1,13 @@
 import React from 'react';
 import './Instructions.css';
 
-const Instructions = () => {
+const Instructions = ({ setDisplayInstructions }) => {
   return (
     <div className="flex-container">
       <div className="instructions-container">
-        <div className="close">X</div>
+        <div className="close" onClick={() => setDisplayInstructions(false)}>
+          X
+        </div>
         <h3 className="ins-header">How To Play</h3>
         <h4 className="ins-header">
           <strong>Create words using letters from the hive.</strong>
