@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Nav, Instructions } from './components/index';
+import { Nav, Hive } from './components/index';
 
 function App() {
   const [displayInstructions, setDisplayInstructions] = useState(false);
@@ -10,6 +10,7 @@ function App() {
         displayInstructions={displayInstructions}
         setDisplayInstructions={setDisplayInstructions}
       />
+      <Hive />
     </div>
   );
 }

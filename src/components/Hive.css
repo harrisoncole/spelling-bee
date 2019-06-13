@@ -1,0 +1,28 @@
+.hive {
+  position: relative;
+  width: 100%;
+  padding-top: 300px;
+}
+
+.top {
+  transform: translate(0, -100%);
+}
+.top-right {
+  transform: translate(75%, -50%);
+}
+.top-left {
+  transform: translate(-75%, -50%);
+}
+.bottom-right {
+  transform: translate(75%, 50%);
+}
+.bottom-left {
+  transform: translate(-75%, 50%);
+}
+.bottom {
+  transform: translate(0, 100%);
+}
+.center {
+  transform: translate(0, 0);
+  fill: #f8cd05;
+}

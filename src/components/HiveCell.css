@@ -1,0 +1,13 @@
+.hive-cell {
+  fill: #e6e6e6;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.clicked {
+  height: 60px;
+}
