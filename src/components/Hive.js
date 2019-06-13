@@ -2,7 +2,7 @@ import React from 'react';
 import { HiveCell } from './index';
 import './Hive.css';
 
-const Hive = () => {
+const Hive = ({ letters }) => {
   const cellArray = [
     'top',
     'top-left',
@@ -14,7 +14,10 @@ const Hive = () => {
   ];
   return (
     <div className="hive">
-      {cellArray.map(cell => cell && <HiveCell cellLocation={cell} />)}
+      {cellArray.map(
+        (cell, idx) =>
+          cell && <HiveCell cellLocation={cell} letter={letters[idx]} />
+      )}
     </div>
   );
 };

@@ -13,7 +13,7 @@ const HiveCell = ({ cellLocation, letter }) => {
         stroke-width="7.5"
       />
       <text className="letter" x="50%" y="50%" dy="10.75%">
-        H
+        {letter}
       </text>
     </svg>
   );
