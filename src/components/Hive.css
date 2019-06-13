@@ -5,22 +5,22 @@
 }
 
 .top {
-  transform: translate(0, -100%);
+  transform: translate(0, -90%);
 }
 .top-right {
-  transform: translate(80%, -50%);
+  transform: translate(80%, -45%);
 }
 .top-left {
-  transform: translate(-80%, -50%);
+  transform: translate(-80%, -45%);
 }
 .bottom-right {
-  transform: translate(80%, 50%);
+  transform: translate(80%, 45%);
 }
 .bottom-left {
-  transform: translate(-80%, 50%);
+  transform: translate(-80%, 45%);
 }
 .bottom {
-  transform: translate(0, 100%);
+  transform: translate(0, 90%);
 }
 .center {
   transform: translate(0, 0);
