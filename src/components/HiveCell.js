@@ -1,7 +1,7 @@
 import React from 'react';
 import './HiveCell.css';
 
-const HiveCell = ({ cellLocation }) => {
+const HiveCell = ({ cellLocation, letter }) => {
   return (
     <svg
       viewBox="0 0 120 103.92304845413263"
@@ -12,6 +12,9 @@ const HiveCell = ({ cellLocation }) => {
         stroke="white"
         stroke-width="7.5"
       />
+      <text className="letter" x="50%" y="50%" dy="10.75%">
+        H
+      </text>
     </svg>
   );
 };

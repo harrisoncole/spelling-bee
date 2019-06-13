@@ -11,3 +11,11 @@
 .clicked {
   height: 60px;
 }
+
+.letter {
+  fill: black;
+  font-weight: bold;
+  font-size: 30px;
+  text-anchor: middle;
+  text-transform: uppercase;
+}
