@@ -8,16 +8,16 @@
   transform: translate(0, -100%);
 }
 .top-right {
-  transform: translate(75%, -50%);
+  transform: translate(80%, -50%);
 }
 .top-left {
-  transform: translate(-75%, -50%);
+  transform: translate(-80%, -50%);
 }
 .bottom-right {
-  transform: translate(75%, 50%);
+  transform: translate(80%, 50%);
 }
 .bottom-left {
-  transform: translate(-75%, 50%);
+  transform: translate(-80%, 50%);
 }
 .bottom {
   transform: translate(0, 100%);
