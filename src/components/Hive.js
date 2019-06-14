@@ -16,7 +16,9 @@ const Hive = ({ letters }) => {
     <div className="hive">
       {cellArray.map(
         (cell, idx) =>
-          cell && <HiveCell cellLocation={cell} letter={letters[idx]} />
+          cell && (
+            <HiveCell key={cell} cellLocation={cell} letter={letters[idx]} />
+          )
       )}
     </div>
   );

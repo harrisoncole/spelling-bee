@@ -9,7 +9,8 @@
 }
 
 .clicked {
-  height: 60px;
+  stroke-width: 15;
+  stroke: #fff;
 }
 
 .letter {
