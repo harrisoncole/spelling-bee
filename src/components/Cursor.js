@@ -5,11 +5,11 @@ const Cursor = ({ displayInstructions }) => {
   let [blink, setBlink] = useState(true);
 
   useEffect(() => {
-    function swapBlink() {
+    function blinkCursor() {
       setBlink(b => !b);
     }
 
-    const blinkInterval = setInterval(swapBlink, 1000);
+    const blinkInterval = setInterval(blinkCursor, 1000);
 
     return () => clearInterval(blinkInterval);
   }, []);
