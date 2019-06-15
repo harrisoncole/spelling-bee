@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Hive, EntryBar } from './index';
+import { Hive, EntryBar, Cursor } from './index';
 const letterArray = ['c', 'h', 'm', 'o', 't', 'u', 'n'];
 const wordList = {
   cottonmouth: 0,
@@ -42,7 +42,10 @@ const Game = ({ displayInstructions }) => {
   return (
     <div>
       <div>
-        <EntryBar {...props} />
+        <div className="entry-container">
+          <EntryBar {...props} />
+          <Cursor displayInstructions={displayInstructions} />
+        </div>
         <Hive {...props} />
       </div>
     </div>

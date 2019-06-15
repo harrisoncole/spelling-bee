@@ -1,0 +1,9 @@
+.cursor {
+  color: #f8cd05;
+  font-size: 2.8em;
+  font-weight: 200;
+}
+
+.none {
+  opacity: 0;
+}
