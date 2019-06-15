@@ -1,6 +1,7 @@
 import React from 'react';
 import { Instructions } from './index';
 import './Nav.css';
+import '../App.css';
 
 const Nav = ({ displayInstructions, setDisplayInstructions }) => {
   return (

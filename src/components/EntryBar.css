@@ -1,0 +1,15 @@
+.entry-bar {
+  color: black;
+  font-size: 2.2em;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.non-letter {
+  color: #e6e6e6;
+}
+
+.center-letter {
+  color: #f8cd05;
+}

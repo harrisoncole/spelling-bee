@@ -1,8 +1,9 @@
 import React from 'react';
 import { HiveCell } from './index';
 import './Hive.css';
+import '../App.css';
 
-const Hive = ({ letters }) => {
+const Hive = ({ letters, displayInstructions }) => {
   const cellArray = [
     'top',
     'top-left',
@@ -13,7 +14,7 @@ const Hive = ({ letters }) => {
     'center',
   ];
   return (
-    <div className="hive">
+    <div className={displayInstructions ? 'dim hive' : 'hive'}>
       {cellArray.map(
         (cell, idx) =>
           cell && (
