@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './HiveCell.css';
 
 const HiveCell = ({ cellLocation, letter, setCurrentWord, currentWord }) => {
   let [clicked, setClicked] = useState(false);
 
+  useEffect(() => {
+    console.log('use effect');
+    document.addEventListener('keydown', evt =>
+      keyHandler(setClicked, true, evt, letter)
+    );
+    document.addEventListener('keyup', evt =>
+      keyHandler(setClicked, false, evt, letter)
+    );
+
+    return () => {
+      document.removeEventListener('keydown');
+      document.removeEventListener('keyup');
+    };
+  }, [letter]);
   return (
     <svg
-      onMouseDown={evt => clickHandler(setClicked, true, evt)}
-      onMouseUp={evt => clickHandler(setClicked, false, evt)}
-      onMouseLeave={evt => clickHandler(setClicked, false, evt)}
+      onMouseDown={() => clickHandler(setClicked, true)}
+      onMouseUp={() => clickHandler(setClicked, false)}
+      onMouseLeave={() => clickHandler(setClicked, false)}
+      onKeyDown={evt => keyHandler(setClicked, true, evt, letter)}
+      onKeyUp={evt => keyHandler(setClicked, false, evt, letter)}
       viewBox="0 0 120 103.92304845413263"
       className={`${cellLocation} hive-cell`}
     >
@@ -27,7 +43,12 @@ const HiveCell = ({ cellLocation, letter, setCurrentWord, currentWord }) => {
 
 export default HiveCell;
 
-function clickHandler(setter, bool, evt) {
-  console.log('in event: ', evt.type);
+function clickHandler(setter, bool) {
   setter(bool);
+}
+
+function keyHandler(setter, bool, evt, letter) {
+  if (evt.key === letter) {
+    setter(bool);
+  }
 }
