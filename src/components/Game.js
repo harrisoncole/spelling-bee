@@ -34,10 +34,13 @@ const wordList = {
 const Game = ({ displayInstructions }) => {
   const [letters, setLetters] = useState(letterArray);
   const [words, setWords] = useState(wordList);
+  const [currentWord, setCurrentWord] = useState('');
   const props = {
     displayInstructions,
     letters,
     words,
+    currentWord,
+    setCurrentWord,
   };
   return (
     <div className="game-container">
