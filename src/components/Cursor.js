@@ -9,13 +9,15 @@ const Cursor = ({ displayInstructions }) => {
       setBlink(b => !b);
     }
 
-    const blinkInterval = setInterval(blinkCursor, 1000);
+    const blinkInterval = setInterval(blinkCursor, 600);
 
     return () => clearInterval(blinkInterval);
   }, []);
 
   return (
-    <div className={displayInstructions || blink ? 'none' : 'cursor'}>|</div>
+    <div className={displayInstructions || blink ? 'cursor none' : 'cursor'}>
+      |
+    </div>
   );
 };
 

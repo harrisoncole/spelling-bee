@@ -36,8 +36,23 @@
   opacity: 0.2;
 }
 
+.game-container {
+  display: flex;
+}
 .entry-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 200px;
+}
+
+.game-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  height: 500px;
+}
+
+.game-right {
+  align-self: center;
 }

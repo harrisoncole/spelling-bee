@@ -40,14 +40,15 @@ const Game = ({ displayInstructions }) => {
     words,
   };
   return (
-    <div>
-      <div>
+    <div className="game-container">
+      <div className="game-left">
         <div className="entry-container">
           <EntryBar {...props} />
           <Cursor displayInstructions={displayInstructions} />
         </div>
         <Hive {...props} />
       </div>
+      <div className="game-right">Right section</div>
     </div>
   );
 };
