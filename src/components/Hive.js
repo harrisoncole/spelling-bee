@@ -3,7 +3,7 @@ import { HiveCell } from './index';
 import './Hive.css';
 import '../App.css';
 
-const Hive = ({ letters, displayInstructions }) => {
+const Hive = ({ gameLetters, displayInstructions, addLetter }) => {
   const cellArray = [
     'top',
     'top-left',
@@ -18,7 +18,12 @@ const Hive = ({ letters, displayInstructions }) => {
       {cellArray.map(
         (cell, idx) =>
           cell && (
-            <HiveCell key={cell} cellLocation={cell} letter={letters[idx]} />
+            <HiveCell
+              key={cell}
+              cellLocation={cell}
+              letter={gameLetters[idx]}
+              addLetter={addLetter}
+            />
           )
       )}
     </div>

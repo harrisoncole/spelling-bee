@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { Hive, EntryBar, Cursor } from './index';
 const letterArray = ['c', 'h', 'm', 'o', 't', 'u', 'n'];
 const wordList = {
@@ -31,40 +31,63 @@ const wordList = {
   unto: 0,
 };
 
-const Game = ({ displayInstructions }) => {
-  const [letters, setLetters] = useState(letterArray);
-  const [words, setWords] = useState(wordList);
-  const [currentWord, setCurrentWord] = useState([]);
-  const props = {
-    displayInstructions,
-    letters,
-    words,
-    currentWord,
-    setCurrentWord,
-    addLetter,
-  };
-  return (
-    <div className="game-container">
-      <div className="game-left">
-        <div className="entry-container">
-          <EntryBar {...props} />
-          <Cursor displayInstructions={displayInstructions} />
+class Game extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gameLetters: letterArray,
+      words: wordList,
+      currentWord: [],
+    };
+
+    this.addLetter = this.addLetter.bind(this);
+  }
+
+  // const Game = ({ displayInstructions }) => {
+  //   const [gameLetters, setLetters] = useState(letterArray);
+  //   const [words, setWords] = useState(wordList);
+  //   const [currentWord, setCurrentWord] = useState([]);
+  //   const props = {
+  //     displayInstructions,
+  //     gameLetters,
+  //     words,
+  //     currentWord,
+  //     setCurrentWord,
+  //   };
+
+  addLetter(newLetter) {
+    const letters = this.state.gameLetters;
+    const word = [...this.state.currentWord];
+    const letterObj = { letter: newLetter, class: 'edge' };
+    if (newLetter === letters[letters.length - 1]) {
+      letterObj.class = 'center';
+    } else if (!letters.includes(newLetter)) {
+      letterObj.class = 'non-hive';
+    }
+    word.push(letterObj);
+    this.setState({ currentWord: word });
+  }
+
+  render() {
+    const props = {
+      displayInstructions: this.props.displayInstructions,
+      addLetter: this.addLetter,
+      gameLetters: this.state.gameLetters,
+    };
+
+    return (
+      <div className="game-container">
+        <div className="game-left">
+          <div className="entry-container">
+            <EntryBar {...props} {...this.state} />
+            <Cursor {...props} />
+          </div>
+          <Hive {...props} />
         </div>
-        <Hive {...props} />
+        <div className="game-right">Right section</div>
       </div>
-      <div className="game-right">Right section</div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Game;
-
-function addLetter(newLetter, setCurrentWord, letters) {
-  const letterObj = { letter: newLetter, class: 'edge' };
-  if (newLetter === letters[letters.length - 1]) {
-    letterObj.class = 'center';
-  } else if (!letters.includes(newLetter)) {
-    letterObj.class = 'non-hive';
-  }
-  setCurrentWord(word => word.concat([letterObj]));
-}

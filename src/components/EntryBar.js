@@ -5,7 +5,9 @@ const EntryBar = ({ displayInstructions, currentWord }) => {
   return (
     <div>
       <div className={displayInstructions ? 'dim entry-bar' : 'entry-bar'} />{' '}
-      {currentWord}
+      {currentWord.map((letter, idx) => (
+        <span key={idx}>{letter.letter}</span>
+      ))}
     </div>
   );
 };

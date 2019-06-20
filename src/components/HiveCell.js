@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './HiveCell.css';
 
-const HiveCell = ({ cellLocation, letter, setCurrentWord, currentWord }) => {
+const HiveCell = ({ cellLocation, letter, addLetter }) => {
   let [clicked, setClicked] = useState(false);
-
   useEffect(() => {
-    console.log('use effect');
     document.addEventListener('keydown', evt =>
       keyHandler(setClicked, true, evt, letter)
     );
@@ -14,22 +12,27 @@ const HiveCell = ({ cellLocation, letter, setCurrentWord, currentWord }) => {
     );
 
     return () => {
-      document.removeEventListener('keydown');
-      document.removeEventListener('keyup');
+      document.removeEventListener('keydown', keyHandler);
+      document.removeEventListener('keyup', keyHandler);
     };
   }, [letter]);
   return (
     <svg
-      onMouseDown={() => clickHandler(setClicked, true)}
+      onMouseDown={() => {
+        clickHandler(setClicked, true);
+        addLetter(letter);
+      }}
       onMouseUp={() => clickHandler(setClicked, false)}
       onMouseLeave={() => clickHandler(setClicked, false)}
-      onKeyDown={evt => keyHandler(setClicked, true, evt, letter)}
+      onKeyDown={evt => {
+        keyHandler(setClicked, true, evt, letter);
+      }}
       onKeyUp={evt => keyHandler(setClicked, false, evt, letter)}
       viewBox="0 0 120 103.92304845413263"
       className={`${cellLocation} hive-cell`}
     >
       <polygon
-        className={clicked && 'clicked'}
+        className={clicked ? 'clicked' : ''}
         points="0,51.96152422706631 30,0 90,0 120,51.96152422706631 90,103.92304845413263 30,103.92304845413263"
         stroke="white"
         strokeWidth="5"
