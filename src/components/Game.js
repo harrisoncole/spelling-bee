@@ -34,13 +34,14 @@ const wordList = {
 const Game = ({ displayInstructions }) => {
   const [letters, setLetters] = useState(letterArray);
   const [words, setWords] = useState(wordList);
-  const [currentWord, setCurrentWord] = useState('');
+  const [currentWord, setCurrentWord] = useState([]);
   const props = {
     displayInstructions,
     letters,
     words,
     currentWord,
     setCurrentWord,
+    addLetter,
   };
   return (
     <div className="game-container">
@@ -57,3 +58,13 @@ const Game = ({ displayInstructions }) => {
 };
 
 export default Game;
+
+function addLetter(newLetter, setCurrentWord, letters) {
+  const letterObj = { letter: newLetter, class: 'edge' };
+  if (newLetter === letters[letters.length - 1]) {
+    letterObj.class = 'center';
+  } else if (!letters.includes(newLetter)) {
+    letterObj.class = 'non-hive';
+  }
+  setCurrentWord(word => word.concat([letterObj]));
+}

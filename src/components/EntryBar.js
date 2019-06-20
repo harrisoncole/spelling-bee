@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './EntryBar.css';
 
 const EntryBar = ({ displayInstructions, currentWord }) => {
