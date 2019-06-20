@@ -3,27 +3,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .top {
-  transform: translate(0, -90%);
+  transform: translate(0, -140%);
 }
 .top-right {
-  transform: translate(80%, -45%);
+  transform: translate(80%, -95%);
 }
 .top-left {
-  transform: translate(-80%, -45%);
+  transform: translate(-80%, -95%);
 }
 .bottom-right {
-  transform: translate(80%, 45%);
+  transform: translate(80%, -5%);
 }
 .bottom-left {
-  transform: translate(-80%, 45%);
+  transform: translate(-80%, -5%);
 }
 .bottom {
-  transform: translate(0, 90%);
+  transform: translate(0, 40%);
 }
 .center {
-  transform: translate(0, 0);
+  transform: translate(0, -50%);
   fill: #f8cd05;
 }

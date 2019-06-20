@@ -1,9 +1,11 @@
 .entry-bar {
+  margin: 0;
+  padding: 0;
   color: black;
   font-size: 2.2em;
   text-transform: uppercase;
   font-weight: bold;
-  text-align: center;
+  text-align: bottom;
 }
 
 .non-letter {

@@ -4,16 +4,19 @@ import './HiveCell.css';
 const HiveCell = ({ cellLocation, letter, addLetter }) => {
   let [clicked, setClicked] = useState(false);
   useEffect(() => {
-    document.addEventListener('keydown', evt =>
-      keyHandler(setClicked, true, evt, letter)
-    );
-    document.addEventListener('keyup', evt =>
-      keyHandler(setClicked, false, evt, letter)
-    );
+    function keyDownHandler(evt) {
+      keyHandler(setClicked, true, evt, letter);
+    }
+
+    function keyUpHandler(evt) {
+      keyHandler(setClicked, false, evt, letter);
+    }
+    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keyup', keyUpHandler);
 
     return () => {
-      document.removeEventListener('keydown', keyHandler);
-      document.removeEventListener('keyup', keyHandler);
+      document.removeEventListener('keydown', keyDownHandler);
+      document.removeEventListener('keyup', keyUpHandler);
     };
   }, [letter]);
   return (
@@ -24,10 +27,6 @@ const HiveCell = ({ cellLocation, letter, addLetter }) => {
       }}
       onMouseUp={() => clickHandler(setClicked, false)}
       onMouseLeave={() => clickHandler(setClicked, false)}
-      onKeyDown={evt => {
-        keyHandler(setClicked, true, evt, letter);
-      }}
-      onKeyUp={evt => keyHandler(setClicked, false, evt, letter)}
       viewBox="0 0 120 103.92304845413263"
       className={`${cellLocation} hive-cell`}
     >

@@ -41,30 +41,25 @@ class Game extends Component {
     };
 
     this.addLetter = this.addLetter.bind(this);
+    this.removeLetter = this.removeLetter.bind(this);
   }
-
-  // const Game = ({ displayInstructions }) => {
-  //   const [gameLetters, setLetters] = useState(letterArray);
-  //   const [words, setWords] = useState(wordList);
-  //   const [currentWord, setCurrentWord] = useState([]);
-  //   const props = {
-  //     displayInstructions,
-  //     gameLetters,
-  //     words,
-  //     currentWord,
-  //     setCurrentWord,
-  //   };
 
   addLetter(newLetter) {
     const letters = this.state.gameLetters;
     const word = [...this.state.currentWord];
     const letterObj = { letter: newLetter, class: 'edge' };
     if (newLetter === letters[letters.length - 1]) {
-      letterObj.class = 'center';
+      letterObj.class = 'center-letter';
     } else if (!letters.includes(newLetter)) {
-      letterObj.class = 'non-hive';
+      letterObj.class = 'non-letter';
     }
     word.push(letterObj);
+    this.setState({ currentWord: word });
+  }
+
+  removeLetter() {
+    const word = [...this.state.currentWord];
+    word.pop();
     this.setState({ currentWord: word });
   }
 
@@ -72,6 +67,7 @@ class Game extends Component {
     const props = {
       displayInstructions: this.props.displayInstructions,
       addLetter: this.addLetter,
+      removeLetter: this.removeLetter,
       gameLetters: this.state.gameLetters,
     };
 
