@@ -23,8 +23,8 @@ const Hive = ({
     function keyDownHandler(evt) {
       console.log(evt);
       const letters = 'abcdefghijklmnopqrstuvwxyz';
-      if (letters.includes(evt.key)) {
-        addLetter(evt.key);
+      if (letters.includes(evt.key.toLowerCase())) {
+        addLetter(evt.key.toLowerCase());
       } else if (evt.key === 'Backspace') {
         removeLetter();
       }
