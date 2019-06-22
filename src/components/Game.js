@@ -1,6 +1,6 @@
 import React, { useState, Component } from 'react';
 import { Hive, EntryBar, Cursor } from './index';
-const letterArray = ['c', 'h', 'm', 'o', 't', 'u', 'n'];
+const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
   coconut: 0,
@@ -38,20 +38,23 @@ class Game extends Component {
       gameLetters: letterArray,
       words: wordList,
       currentWord: [],
+      invalidLetters: false,
     };
 
     this.addLetter = this.addLetter.bind(this);
     this.removeLetter = this.removeLetter.bind(this);
+    this.checkWord = this.checkWord.bind(this);
   }
 
   addLetter(newLetter) {
     const letters = this.state.gameLetters;
     const word = [...this.state.currentWord];
     const letterObj = { letter: newLetter, class: 'edge' };
-    if (newLetter === letters[letters.length - 1]) {
+    if (newLetter === letters[0]) {
       letterObj.class = 'center-letter';
     } else if (!letters.includes(newLetter)) {
       letterObj.class = 'non-letter';
+      this.setState({ invalidLetters: true });
     }
     word.push(letterObj);
     this.setState({ currentWord: word });
@@ -61,6 +64,43 @@ class Game extends Component {
     const word = [...this.state.currentWord];
     word.pop();
     this.setState({ currentWord: word });
+  }
+
+  includeWord(word) {
+    let newWords = { ...this.state.words };
+    newWords[word] = 1;
+    this.setState({ words: newWords });
+  }
+
+  explainer() {
+    const currentWord = this.state.currentWord;
+    if (currentWord.length <= 3) {
+      return 'size';
+    } else if (this.state.invalidLetters) {
+      return 'invalid';
+    } else if (!currentWord.includes(this.state.gameLetters[0])) {
+      return 'non-center';
+    }
+
+    throw new Error('use of explainer with valid word');
+  }
+
+  checkWord() {
+    const currentWord = this.state.currentWord.join('');
+    if (this.state.words[currentWord] === 0) {
+      this.includeWord(currentWord);
+      return 'match';
+    } else if (this.state.words[currentWord]) {
+      return 'seen';
+    }
+    return this.explainer();
+  }
+
+  clearWord() {
+    this.setState({
+      invalidLetters: false,
+      currentWord: [],
+    });
   }
 
   render() {

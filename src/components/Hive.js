@@ -10,13 +10,13 @@ const Hive = ({
   removeLetter,
 }) => {
   const cellArray = [
-    'top',
+    'center',
     'top-left',
     'top-right',
     'bottom',
     'bottom-left',
     'bottom-right',
-    'center',
+    'top',
   ];
 
   useEffect(() => {
@@ -27,6 +27,8 @@ const Hive = ({
         addLetter(evt.key.toLowerCase());
       } else if (evt.key === 'Backspace') {
         removeLetter();
+      } else if (evt.key === 'Enter') {
+        //do something
       }
     }
     document.addEventListener('keydown', keyDownHandler);
