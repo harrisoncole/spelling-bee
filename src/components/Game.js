@@ -44,6 +44,7 @@ class Game extends Component {
     this.addLetter = this.addLetter.bind(this);
     this.removeLetter = this.removeLetter.bind(this);
     this.checkWord = this.checkWord.bind(this);
+    this.clearWord = this.clearWord.bind(this);
   }
 
   addLetter(newLetter) {
@@ -109,6 +110,8 @@ class Game extends Component {
       addLetter: this.addLetter,
       removeLetter: this.removeLetter,
       gameLetters: this.state.gameLetters,
+      checkWord: this.checkWord,
+      clearWord: this.clearWord,
     };
 
     return (

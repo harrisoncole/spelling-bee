@@ -8,6 +8,8 @@ const Hive = ({
   displayInstructions,
   addLetter,
   removeLetter,
+  checkWord,
+  clearWord,
 }) => {
   const cellArray = [
     'center',
@@ -28,7 +30,7 @@ const Hive = ({
       } else if (evt.key === 'Backspace') {
         removeLetter();
       } else if (evt.key === 'Enter') {
-        //do something
+        enterHandler(checkWord, clearWord)
       }
     }
     document.addEventListener('keydown', keyDownHandler);
@@ -36,7 +38,7 @@ const Hive = ({
     return () => {
       document.removeEventListener('keydown', keyDownHandler);
     };
-  }, [addLetter, removeLetter]);
+  }, [addLetter, removeLetter, checkWord, clearWord]);
 
   return (
     <div className={displayInstructions ? 'dim hive' : 'hive'}>
@@ -56,3 +58,8 @@ const Hive = ({
 };
 
 export default Hive;
+
+function enterHandler(checkWord, clearWord) {
+  const explanation = checkWord();
+  setTimeout(() => clearWord(), 500);
+}
