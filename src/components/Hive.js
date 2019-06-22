@@ -30,7 +30,7 @@ const Hive = ({
       } else if (evt.key === 'Backspace') {
         removeLetter();
       } else if (evt.key === 'Enter') {
-        enterHandler(checkWord, clearWord)
+        enterHandler(checkWord, clearWord);
       }
     }
     document.addEventListener('keydown', keyDownHandler);

@@ -37,6 +37,7 @@ class Game extends Component {
     this.state = {
       gameLetters: letterArray,
       words: wordList,
+      guessedWords: [],
       currentWord: [],
       invalidLetters: false,
     };
@@ -69,8 +70,10 @@ class Game extends Component {
 
   includeWord(word) {
     let newWords = { ...this.state.words };
+    let newGuessedWords = [...this.state.guessedWords];
     newWords[word] = 1;
-    this.setState({ words: newWords });
+    newGuessedWords.push(word);
+    this.setState({ words: newWords, guessedWords: newGuessedWords });
   }
 
   explainer() {
@@ -85,9 +88,17 @@ class Game extends Component {
 
     throw new Error('use of explainer with valid word');
   }
+  stringifyWord() {
+    const wordArray = this.state.currentWord;
+    let resultWord = '';
+    wordArray.forEach(word => {
+      resultWord += word.letter;
+    });
 
+    return resultWord;
+  }
   checkWord() {
-    const currentWord = this.state.currentWord.join('');
+    const currentWord = this.stringifyWord();
     if (this.state.words[currentWord] === 0) {
       this.includeWord(currentWord);
       return 'match';
@@ -123,7 +134,13 @@ class Game extends Component {
           </div>
           <Hive {...props} />
         </div>
-        <div className="game-right">Right section</div>
+        <div className="game-right">
+          <ul>
+            {this.state.guessedWords.map(entry => (
+              <li>{entry}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }
