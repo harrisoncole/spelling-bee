@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { Hive, EntryBar, Cursor } from './index';
+import { Hive, EntryBar, Cursor, WordBox } from './index';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -135,11 +135,10 @@ class Game extends Component {
           <Hive {...props} />
         </div>
         <div className="game-right">
-          <ul>
-            {this.state.guessedWords.map(entry => (
-              <li>{entry}</li>
-            ))}
-          </ul>
+          <WordBox
+            words={this.state.guessedWords}
+            displayInstructions={props.displayInstructions}
+          />
         </div>
       </div>
     );

@@ -1,3 +1,20 @@
 import React from 'react';
+import './WordBox.css';
 
-const WordBox = () => {};
+const WordBox = ({ words, displayInstructions }) => {
+  return (
+    <div className={displayInstructions ? 'word-box dim' : 'word-box'}>
+      <div>
+        {' '}
+        You have found {words.length} {words.length === 1 ? 'word' : 'words'}.
+      </div>
+      <ul>
+        {words.sort().map(word => (
+          <li>{word}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default WordBox;

@@ -7,5 +7,6 @@ import Hive from './Hive';
 import Game from './Game';
 import EntryBar from './EntryBar';
 import Cursor from './Cursor';
+import WordBox from './WordBox';
 
-export { Nav, Instructions, HiveCell, Hive, Game, EntryBar, Cursor };
+export { Nav, Instructions, HiveCell, Hive, Game, EntryBar, Cursor, WordBox };

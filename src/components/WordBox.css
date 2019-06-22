@@ -1,0 +1,10 @@
+.word-box {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  height: 300px;
+  width: 400px;
+}
+
+.word-box.dim {
+  opacity: 0;
+}
