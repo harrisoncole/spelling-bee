@@ -23,14 +23,13 @@ const Hive = ({
 
   useEffect(() => {
     function keyDownHandler(evt) {
-      console.log(evt);
       const letters = 'abcdefghijklmnopqrstuvwxyz';
       if (letters.includes(evt.key.toLowerCase())) {
         addLetter(evt.key.toLowerCase());
       } else if (evt.key === 'Backspace') {
         removeLetter();
       } else if (evt.key === 'Enter') {
-        enterHandler(checkWord, clearWord);
+        checkWord();
       }
     }
     document.addEventListener('keydown', keyDownHandler);
@@ -58,8 +57,3 @@ const Hive = ({
 };
 
 export default Hive;
-
-function enterHandler(checkWord, clearWord) {
-  const explanation = checkWord();
-  setTimeout(() => clearWord(), 500);
-}

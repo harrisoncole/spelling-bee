@@ -99,6 +99,7 @@ class Game extends Component {
   }
   checkWord() {
     const currentWord = this.stringifyWord();
+    setTimeout(() => this.clearWord(), 500);
     if (this.state.words[currentWord] === 0) {
       this.includeWord(currentWord);
       return 'match';
@@ -122,7 +123,6 @@ class Game extends Component {
       removeLetter: this.removeLetter,
       gameLetters: this.state.gameLetters,
       checkWord: this.checkWord,
-      clearWord: this.clearWord,
     };
 
     return (
