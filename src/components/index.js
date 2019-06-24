@@ -9,6 +9,7 @@ import EntryBar from './EntryBar';
 import Cursor from './Cursor';
 import WordBox from './WordBox';
 import BottomButtons from './BottomButtons';
+import EnterButton from './EnterButton';
 
 export {
   Nav,
@@ -20,4 +21,5 @@ export {
   Cursor,
   WordBox,
   BottomButtons,
+  EnterButton,
 };

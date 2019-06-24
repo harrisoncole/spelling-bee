@@ -2,3 +2,24 @@
   display: flex;
   justify-content: center;
 }
+
+.btn {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  border-radius: 45px;
+  text-align: center;
+  margin: 10px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:active {
+  background-color: #e6e6e6;
+}
+
+.side {
+  padding: 15px 20px;
+}

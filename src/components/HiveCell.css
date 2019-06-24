@@ -5,7 +5,8 @@
   height: 100px;
 }
 
-.clicked {
+.clicked,
+.polygon:active {
   stroke-width: 15;
   stroke: #fff;
 }

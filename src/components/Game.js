@@ -133,7 +133,7 @@ class Game extends Component {
             <Cursor {...props} />
           </div>
           <Hive {...props} />
-          <BottomButtons />
+          <BottomButtons {...props} />
         </div>
         <div className="game-right">
           <WordBox
