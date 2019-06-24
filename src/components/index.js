@@ -10,6 +10,7 @@ import Cursor from './Cursor';
 import WordBox from './WordBox';
 import BottomButtons from './BottomButtons';
 import EnterButton from './EnterButton';
+import DeleteButton from './DeleteButton';
 
 export {
   Nav,
@@ -22,4 +23,5 @@ export {
   WordBox,
   BottomButtons,
   EnterButton,
+  DeleteButton,
 };

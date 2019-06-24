@@ -123,6 +123,7 @@ class Game extends Component {
       removeLetter: this.removeLetter,
       gameLetters: this.state.gameLetters,
       checkWord: this.checkWord,
+      clearWord: this.clearWord,
     };
 
     return (
