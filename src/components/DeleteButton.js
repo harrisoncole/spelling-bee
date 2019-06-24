@@ -1,8 +1,8 @@
 import React from 'react';
 
-const DeleteButton = ({ clearWord }) => {
+const DeleteButton = ({ removeLetter }) => {
   return (
-    <div className="btn side" onClick={clearWord}>
+    <div className="btn side" onClick={removeLetter}>
       Delete
     </div>
   );
