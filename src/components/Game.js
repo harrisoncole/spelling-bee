@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { Hive, EntryBar, Cursor, WordBox } from './index';
+import { Hive, EntryBar, Cursor, WordBox, BottomButtons } from './index';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -133,6 +133,7 @@ class Game extends Component {
             <Cursor {...props} />
           </div>
           <Hive {...props} />
+          <BottomButtons />
         </div>
         <div className="game-right">
           <WordBox

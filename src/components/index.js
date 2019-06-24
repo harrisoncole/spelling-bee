@@ -8,5 +8,16 @@ import Game from './Game';
 import EntryBar from './EntryBar';
 import Cursor from './Cursor';
 import WordBox from './WordBox';
+import BottomButtons from './BottomButtons';
 
-export { Nav, Instructions, HiveCell, Hive, Game, EntryBar, Cursor, WordBox };
+export {
+  Nav,
+  Instructions,
+  HiveCell,
+  Hive,
+  Game,
+  EntryBar,
+  Cursor,
+  WordBox,
+  BottomButtons,
+};
