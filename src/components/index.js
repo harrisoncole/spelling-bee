@@ -11,6 +11,7 @@ import WordBox from './WordBox';
 import BottomButtons from './BottomButtons';
 import EnterButton from './EnterButton';
 import DeleteButton from './DeleteButton';
+import SwapLettersButton from './SwapLettersButton';
 
 export {
   Nav,
@@ -24,4 +25,5 @@ export {
   BottomButtons,
   EnterButton,
   DeleteButton,
+  SwapLettersButton,
 };

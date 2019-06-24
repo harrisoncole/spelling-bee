@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Instructions.css';
 
 const Instructions = ({ setDisplayInstructions }) => {
+  useEffect(() => {
+    function clickHandler(evt) {
+      if (!nodeWithinInstructions(evt.target)) {
+        setDisplayInstructions(false);
+      }
+    }
+
+    document.addEventListener('click', clickHandler);
+
+    return () => document.removeEventListener('click', clickHandler);
+  });
   return (
     <div className="flex-container">
       <div className="instructions-container">
@@ -35,3 +46,13 @@ const Instructions = ({ setDisplayInstructions }) => {
 };
 
 export default Instructions;
+
+function nodeWithinInstructions(node) {
+  const instructions = document.querySelector('.instructions-container');
+  if (node === instructions) return true;
+  if (node.parentNode) {
+    return nodeWithinInstructions(node.parentNode);
+  } else {
+    return false;
+  }
+}

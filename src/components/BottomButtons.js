@@ -1,12 +1,14 @@
 import React from 'react';
-import { EnterButton, DeleteButton } from './index';
+import { EnterButton, DeleteButton, SwapLettersButton } from './index';
 import './BottomButtons.css';
 
-const BottomButtons = ({ checkWord, clearWord }) => {
+const BottomButtons = ({ checkWord, clearWord, displayInstructions }) => {
   return (
-    <div className="bottom-buttons">
+    <div
+      className={displayInstructions ? 'dim bottom-buttons' : 'bottom-buttons'}
+    >
       <EnterButton checkWord={checkWord} />
-      <div className="btn">Btn</div>
+      <SwapLettersButton />
       <DeleteButton clearWord={clearWord} />
     </div>
   );
