@@ -8,6 +8,20 @@ h3 {
   justify-content: center;
 }
 
+#instructions-container {
+  z-index: 1;
+  margin-top: 20px;
+  position: fixed;
+  bottom: 250;
+  right: -10;
+  background-color: white;
+  opacity: 1;
+  width: 30%;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.08);
+}
+
 .close {
   text-align: right;
   color: #959595;
@@ -21,17 +35,4 @@ h3 {
 
 .ins-header {
   margin-left: 10px;
-}
-.instructions-container {
-  z-index: 1;
-  margin-top: 20px;
-  position: fixed;
-  bottom: 250;
-  right: -10;
-  background-color: white;
-  opacity: 1;
-  width: 30%;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.08);
 }

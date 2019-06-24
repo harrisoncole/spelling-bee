@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
+import { nodeWithinId } from '../utils';
 import './Instructions.css';
 
 const Instructions = ({ setDisplayInstructions }) => {
   useEffect(() => {
     function clickHandler(evt) {
-      if (!nodeWithinInstructions(evt.target)) {
+      if (!nodeWithinId(evt.target, 'instructions-container')) {
         setDisplayInstructions(false);
       }
     }
@@ -15,7 +16,7 @@ const Instructions = ({ setDisplayInstructions }) => {
   });
   return (
     <div className="flex-container">
-      <div className="instructions-container">
+      <div id="instructions-container">
         <div className="close" onClick={() => setDisplayInstructions(false)}>
           X
         </div>
@@ -46,13 +47,3 @@ const Instructions = ({ setDisplayInstructions }) => {
 };
 
 export default Instructions;
-
-function nodeWithinInstructions(node) {
-  const instructions = document.querySelector('.instructions-container');
-  if (node === instructions) return true;
-  if (node.parentNode) {
-    return nodeWithinInstructions(node.parentNode);
-  } else {
-    return false;
-  }
-}
