@@ -40,7 +40,7 @@ const Hive = ({
   }, [addLetter, removeLetter, checkWord, clearWord]);
 
   return (
-    <div className={displayInstructions ? 'dim hive' : 'hive'}>
+    <div className="hive">
       {cellArray.map(
         (cell, idx) =>
           cell && (

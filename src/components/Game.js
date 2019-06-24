@@ -127,7 +127,13 @@ class Game extends Component {
     };
 
     return (
-      <div className="game-container">
+      <div
+        className={
+          this.props.displayInstructions
+            ? 'dim game-container'
+            : 'game-container'
+        }
+      >
         <div className="game-left">
           <div className="entry-container">
             <EntryBar {...props} {...this.state} />
@@ -137,10 +143,7 @@ class Game extends Component {
           <BottomButtons {...props} />
         </div>
         <div className="game-right">
-          <WordBox
-            words={this.state.guessedWords}
-            displayInstructions={props.displayInstructions}
-          />
+          <WordBox words={this.state.guessedWords} />
         </div>
       </div>
     );

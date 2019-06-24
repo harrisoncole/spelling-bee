@@ -3,7 +3,7 @@ import './WordBox.css';
 
 const WordBox = ({ words, displayInstructions }) => {
   return (
-    <div className={displayInstructions ? 'word-box dim' : 'word-box'}>
+    <div className="word-box">
       <div>
         {' '}
         You have found {words.length} {words.length === 1 ? 'word' : 'words'}.
