@@ -8,6 +8,21 @@ function nodeWithinId(node, id) {
   }
 }
 
+function fischerYatesCopy(arr) {
+  const copy = [...arr];
+  let pointer = arr.length,
+    temp,
+    idx;
+  while (pointer) {
+    idx = Math.floor(Math.random() * pointer--);
+    temp = copy[pointer];
+    copy[pointer] = copy[idx];
+    copy[idx] = temp;
+  }
+  return copy;
+}
+
 module.exports = {
   nodeWithinId,
+  fischerYatesCopy,
 };

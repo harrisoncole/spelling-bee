@@ -1,5 +1,6 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import { Hive, EntryBar, Cursor, WordBox, BottomButtons } from './index';
+import { fischerYatesCopy } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -46,6 +47,7 @@ class Game extends Component {
     this.removeLetter = this.removeLetter.bind(this);
     this.checkWord = this.checkWord.bind(this);
     this.clearWord = this.clearWord.bind(this);
+    this.shuffleLetters = this.shuffleLetters.bind(this);
   }
 
   addLetter(newLetter) {
@@ -116,6 +118,14 @@ class Game extends Component {
     });
   }
 
+  shuffleLetters() {
+    const newEdges = fischerYatesCopy(this.state.gameLetters.slice(1));
+    const center = this.state.gameLetters[0];
+    this.setState({
+      gameLetters: [center, ...newEdges],
+    });
+  }
+
   render() {
     const props = {
       displayInstructions: this.props.displayInstructions,
@@ -124,6 +134,7 @@ class Game extends Component {
       gameLetters: this.state.gameLetters,
       checkWord: this.checkWord,
       clearWord: this.clearWord,
+      shuffleLetters: this.shuffleLetters,
     };
 
     return (

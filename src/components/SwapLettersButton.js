@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SwapLettersButton = ({ swapLetters }) => {
+const SwapLettersButton = ({ shuffleLetters }) => {
   return (
-    <div className="btn side" onClick={swapLetters}>
+    <div className="btn side" onClick={shuffleLetters}>
       Swap!
     </div>
   );
