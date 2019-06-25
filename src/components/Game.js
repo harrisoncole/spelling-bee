@@ -48,6 +48,15 @@ class Game extends Component {
     this.checkWord = this.checkWord.bind(this);
     this.clearWord = this.clearWord.bind(this);
     this.shuffleLetters = this.shuffleLetters.bind(this);
+    this.keyDownHandler = this.keyDownHandler.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.keyDownHandler);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keyDownHandler);
   }
 
   addLetter(newLetter) {
@@ -124,6 +133,19 @@ class Game extends Component {
     this.setState({
       gameLetters: [center, ...newEdges],
     });
+  }
+
+  keyDownHandler(evt) {
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    if (letters.includes(evt.key.toLowerCase())) {
+      this.addLetter(evt.key.toLowerCase());
+    } else if (evt.key === 'Backspace') {
+      this.removeLetter();
+    } else if (evt.key === 'Enter') {
+      this.checkWord();
+    } else if (evt.keyCode === 32) {
+      this.shuffleLetters();
+    }
   }
 
   render() {

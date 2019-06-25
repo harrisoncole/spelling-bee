@@ -21,26 +21,6 @@ const Hive = ({
     'top',
   ];
 
-  useEffect(() => {
-    function keyDownHandler(evt) {
-      const letters = 'abcdefghijklmnopqrstuvwxyz';
-      if (letters.includes(evt.key.toLowerCase())) {
-        addLetter(evt.key.toLowerCase());
-      } else if (evt.key === 'Backspace') {
-        removeLetter();
-      } else if (evt.key === 'Enter') {
-        checkWord();
-      } else if (evt.keyCode === 32) {
-        shuffleLetters();
-      }
-    }
-    document.addEventListener('keydown', keyDownHandler);
-
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler);
-    };
-  }, [addLetter, removeLetter, checkWord, clearWord, shuffleLetters]);
-
   return (
     <div className="hive">
       {cellArray.map(
