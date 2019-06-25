@@ -21,6 +21,18 @@ const Hive = ({
     'top',
   ];
 
+  useEffect(() => {
+    function keyDownHandler(evt) {
+      const letters = 'abcdefghijklmnopqrstuvwxyz';
+      if (letters.includes(evt.key.toLowerCase())) {
+        addLetter(evt.key.toLowerCase());
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler);
+    return () => document.removeEventListener('keydown', keyDownHandler);
+  });
+
   return (
     <div className="hive">
       {cellArray.map(
