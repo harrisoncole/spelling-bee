@@ -22,7 +22,21 @@ function fischerYatesCopy(arr) {
   return copy;
 }
 
+function getElementsWithinClass(className) {
+  const elementArray = Array.from(document.getElementsByClassName(className));
+  return elementArray;
+}
+
+function flashDisplay(elementArray, duration) {
+  elementArray.forEach(element => (element.style.display = 'none'));
+  setTimeout(() => {
+    elementArray.forEach(element => (element.style.display = 'initial'));
+  }, duration);
+}
+
 module.exports = {
   nodeWithinId,
   fischerYatesCopy,
+  getElementsWithinClass,
+  flashDisplay,
 };

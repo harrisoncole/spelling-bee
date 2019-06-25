@@ -32,7 +32,12 @@ const HiveCell = ({ cellLocation, letter, addLetter }) => {
         stroke="white"
         strokeWidth="5"
       />
-      <text className="letter" x="50%" y="50%" dy="10.75%">
+      <text
+        className={cellLocation === 'center' ? 'letter' : 'edge-letter letter'}
+        x="50%"
+        y="50%"
+        dy="10.75%"
+      >
         {letter}
       </text>
     </svg>
