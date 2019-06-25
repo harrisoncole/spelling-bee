@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './HiveCell.css';
-
 const HiveCell = ({ cellLocation, letter, addLetter }) => {
   let [keyPressed, setKeyPressed] = useState(false);
   useEffect(() => {

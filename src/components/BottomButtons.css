@@ -16,7 +16,8 @@
   cursor: pointer;
 }
 
-.btn:active {
+.btn:active,
+.pressed {
   background-color: #e6e6e6;
 }
 

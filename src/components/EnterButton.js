@@ -1,8 +1,11 @@
 import React from 'react';
 
-const EnterButton = ({ checkWord }) => {
+const EnterButton = ({ checkWord, enterPressed }) => {
   return (
-    <div className="btn side" onClick={checkWord}>
+    <div
+      className={enterPressed ? 'btn side pressed' : 'btn side'}
+      onClick={checkWord}
+    >
       Enter
     </div>
   );

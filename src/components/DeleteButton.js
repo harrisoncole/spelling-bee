@@ -1,8 +1,11 @@
 import React from 'react';
 
-const DeleteButton = ({ removeLetter }) => {
+const DeleteButton = ({ deletePressed, removeLetter }) => {
   return (
-    <div className="btn side" onClick={removeLetter}>
+    <div
+      className={deletePressed ? 'btn side pressed' : 'btn side'}
+      onClick={removeLetter}
+    >
       Delete
     </div>
   );
