@@ -5,7 +5,7 @@ import '../App.css';
 
 const Hive = ({
   gameLetters,
-  displayInstructions,
+  shuffleLetters,
   addLetter,
   removeLetter,
   checkWord,
@@ -30,6 +30,8 @@ const Hive = ({
         removeLetter();
       } else if (evt.key === 'Enter') {
         checkWord();
+      } else if (evt.keyCode === 32) {
+        shuffleLetters();
       }
     }
     document.addEventListener('keydown', keyDownHandler);
@@ -37,7 +39,7 @@ const Hive = ({
     return () => {
       document.removeEventListener('keydown', keyDownHandler);
     };
-  }, [addLetter, removeLetter, checkWord, clearWord]);
+  }, [addLetter, removeLetter, checkWord, clearWord, shuffleLetters]);
 
   return (
     <div className="hive">
