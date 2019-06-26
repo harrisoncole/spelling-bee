@@ -13,12 +13,11 @@ const BottomButtons = ({ checkWord, removeLetter, shuffleLetters }) => {
         removeLetter();
         setDeletePressed(true);
       } else if (evt.key === 'Enter') {
-        checkWord();
+        console.log(checkWord());
         setEnterPressed(true);
       } else if (evt.keyCode === 32) {
         shuffleLetters();
         setSwapPressed(true);
-        // flashDisplay(getElementsWithinClass('edge-letter'), 300);
       }
     }
 

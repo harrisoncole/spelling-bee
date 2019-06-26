@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Hive, EntryBar, Cursor, WordBox, BottomButtons } from './index';
+import {
+  Hive,
+  EntryBar,
+  Cursor,
+  WordBox,
+  BottomButtons,
+  Feedback,
+} from './index';
 import { swapClassNames, fischerYatesCopy } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
@@ -41,6 +48,8 @@ class Game extends Component {
       guessedWords: [],
       currentWord: [],
       invalidLetters: false,
+      feedback: null,
+      showFeedback: false,
     };
 
     this.addLetter = this.addLetter.bind(this);
@@ -51,11 +60,11 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.keyDownHandler);
+    // document.addEventListener('keydown', this.keyDownHandler);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keyDownHandler);
+    // document.removeEventListener('keydown', this.keyDownHandler);
   }
 
   addLetter(newLetter) {
@@ -159,6 +168,11 @@ class Game extends Component {
         }
       >
         <div className="game-left">
+          <Feedback
+            message={this.state.feedback}
+            showFeedback={this.state.showFeedback}
+          />
+
           <div className="entry-container">
             <EntryBar {...props} {...this.state} />
             <Cursor {...props} />

@@ -27,16 +27,14 @@ const HiveCell = ({ cellLocation, letter, addLetter }) => {
       className={`${cellLocation} hive-cell`}
     >
       <polygon
+        onMouseLeave={() => setKeyPressed(false)}
         className={keyPressed ? 'clicked polygon' : 'polygon'}
         points="0,51.96152422706631 30,0 90,0 120,51.96152422706631 90,103.92304845413263 30,103.92304845413263"
         stroke="white"
         strokeWidth="5"
       />
       <text
-        onMouseDown={() => {
-          setKeyPressed(true);
-          setTimeout(() => setKeyPressed(false), 200);
-        }}
+        onMouseDown={() => setKeyPressed(true)}
         onMouseUp={() => setKeyPressed(false)}
         className={cellLocation === 'center' ? 'letter' : 'edge-letter'}
         x="50%"
