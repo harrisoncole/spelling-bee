@@ -11,16 +11,27 @@
   stroke: #fff;
 }
 
-.letter {
+.letter,
+.edge-letter {
   fill: black;
   font-weight: bold;
   font-size: 30px;
   text-anchor: middle;
   text-transform: uppercase;
+  opacity: 1;
+  -webkit-transition: opacity 0.8s ease-in;
+  -moz-transition: opacity 0.8s ease-in;
+  transition: opacity 0.8s ease-in;
 }
 
 .hidden {
-  visibility: hidden;
+  fill: black;
+  font-weight: bold;
+  font-size: 30px;
+  text-anchor: middle;
+  text-transform: uppercase;
   opacity: 0;
-  transition: visibility 0s 2s, opacity 2s linear;
+  -webkit-transition: opacity 0.8s ease-out;
+  -moz-transition: opacity 0.8s ease-out;
+  transition: opacity 0.8s ease-out;
 }

@@ -33,7 +33,7 @@ const HiveCell = ({ cellLocation, letter, addLetter }) => {
         strokeWidth="5"
       />
       <text
-        className={cellLocation === 'center' ? 'letter' : 'edge-letter letter'}
+        className={cellLocation === 'center' ? 'letter' : 'edge-letter'}
         x="50%"
         y="50%"
         dy="10.75%"

@@ -22,21 +22,15 @@ function fischerYatesCopy(arr) {
   return copy;
 }
 
-function getElementsWithinClass(className) {
-  const elementArray = Array.from(document.getElementsByClassName(className));
-  return elementArray;
-}
-
-function flashDisplay(elementArray, duration) {
-  elementArray.forEach(element => (element.style.display = 'none'));
-  setTimeout(() => {
-    elementArray.forEach(element => (element.style.display = 'initial'));
-  }, duration);
+function swapClassNames(oldClassName, newClassName) {
+  const htmlCollection = document.querySelectorAll(`.${oldClassName}`);
+  for (let i = 0; i < htmlCollection.length; i++) {
+    htmlCollection[i].setAttribute('class', newClassName);
+  }
 }
 
 module.exports = {
   nodeWithinId,
   fischerYatesCopy,
-  getElementsWithinClass,
-  flashDisplay,
+  swapClassNames,
 };

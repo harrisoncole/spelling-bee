@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Hive, EntryBar, Cursor, WordBox, BottomButtons } from './index';
-import { fischerYatesCopy } from '../utils';
+import { swapClassNames, fischerYatesCopy } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -129,9 +129,14 @@ class Game extends Component {
   shuffleLetters() {
     const newEdges = fischerYatesCopy(this.state.gameLetters.slice(1));
     const center = this.state.gameLetters[0];
-    this.setState({
-      gameLetters: [center, ...newEdges],
-    });
+    swapClassNames('edge-letter', 'hidden');
+
+    setTimeout(() => {
+      this.setState({
+        gameLetters: [center, ...newEdges],
+      });
+      swapClassNames('hidden', 'edge-letter');
+    }, 800);
   }
 
   render() {

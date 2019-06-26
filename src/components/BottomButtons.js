@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { EnterButton, DeleteButton, SwapLettersButton } from './index';
-import { getElementsWithinClass, flashDisplay } from '../utils';
 import './BottomButtons.css';
 
 const BottomButtons = ({ checkWord, removeLetter, shuffleLetters }) => {
@@ -19,7 +18,7 @@ const BottomButtons = ({ checkWord, removeLetter, shuffleLetters }) => {
       } else if (evt.keyCode === 32) {
         shuffleLetters();
         setSwapPressed(true);
-        flashDisplay(getElementsWithinClass('edge-letter'), 300);
+        // flashDisplay(getElementsWithinClass('edge-letter'), 300);
       }
     }
 
