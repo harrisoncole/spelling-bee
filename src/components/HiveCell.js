@@ -33,6 +33,11 @@ const HiveCell = ({ cellLocation, letter, addLetter }) => {
         strokeWidth="5"
       />
       <text
+        onMouseDown={() => {
+          setKeyPressed(true);
+          setTimeout(() => setKeyPressed(false), 200);
+        }}
+        onMouseUp={() => setKeyPressed(false)}
         className={cellLocation === 'center' ? 'letter' : 'edge-letter'}
         x="50%"
         y="50%"
