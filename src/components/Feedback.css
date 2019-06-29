@@ -1,8 +1,31 @@
+.feedback-container {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+}
+
 .feedback {
   text-align: center;
-  height: 30px;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 4px;
+  align-self: flex-start;
 }
 
 .blank {
   opacity: 0;
+}
+
+.incorrect {
+  background-color: black;
+  color: white;
+}
+
+.correct {
+  background-color: white;
+  transform: translate(0, -10px);
+  -webkit-transition: transform 0.8s linear;
+  -moz-transition: transform 0.8s linear;
+  transition: transform 0.8s linear;
 }

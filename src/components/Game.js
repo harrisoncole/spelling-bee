@@ -7,7 +7,11 @@ import {
   BottomButtons,
   Feedback,
 } from './index';
-import { swapClassNames, fischerYatesCopy } from '../utils';
+import {
+  swapClassNames,
+  fischerYatesCopy,
+  objWithinArrIncludes,
+} from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -48,7 +52,7 @@ class Game extends Component {
       guessedWords: [],
       currentWord: [],
       invalidLetters: false,
-      feedback: null,
+      feedback: 'test',
       showFeedback: false,
     };
 
@@ -57,6 +61,7 @@ class Game extends Component {
     this.checkWord = this.checkWord.bind(this);
     this.clearWord = this.clearWord.bind(this);
     this.shuffleLetters = this.shuffleLetters.bind(this);
+    this.setFeedback = this.setFeedback.bind(this);
   }
 
   componentDidMount() {
@@ -98,15 +103,16 @@ class Game extends Component {
   explainer() {
     const currentWord = this.state.currentWord;
     if (currentWord.length <= 3) {
-      return 'size';
+      return 'Too short';
     } else if (this.state.invalidLetters) {
-      return 'invalid';
-    } else if (!currentWord.includes(this.state.gameLetters[0])) {
-      return 'non-center';
+      return 'Bad letters';
+    } else if (!objWithinArrIncludes(currentWord, 'class', 'center-letter')) {
+      return 'Missing center letter';
+    } else {
+      return 'Not in word list';
     }
-
-    throw new Error('use of explainer with valid word');
   }
+
   stringifyWord() {
     const wordArray = this.state.currentWord;
     let resultWord = '';
@@ -118,9 +124,10 @@ class Game extends Component {
   }
   checkWord() {
     const currentWord = this.stringifyWord();
-    setTimeout(() => this.clearWord(), 500);
+    setTimeout(() => this.clearWord(), 400);
     if (this.state.words[currentWord] === 0) {
       this.includeWord(currentWord);
+      this.clearWord();
       return 'match';
     } else if (this.state.words[currentWord]) {
       return 'seen';
@@ -132,6 +139,13 @@ class Game extends Component {
     this.setState({
       invalidLetters: false,
       currentWord: [],
+    });
+  }
+
+  setFeedback(message, showBool) {
+    this.setState({
+      feedback: message,
+      showFeedback: showBool,
     });
   }
 
@@ -157,6 +171,7 @@ class Game extends Component {
       checkWord: this.checkWord,
       clearWord: this.clearWord,
       shuffleLetters: this.shuffleLetters,
+      setFeedback: this.setFeedback,
     };
 
     return (

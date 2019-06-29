@@ -3,14 +3,16 @@ import './Feedback.css';
 
 const Feedback = ({ message, showFeedback }) => {
   return (
-    <div
-      className={
-        showFeedback
-          ? `${getFeedbackClass(message)} feedback`
-          : 'blank feedback'
-      }
-    >
-      {message}
+    <div className="feedback-container">
+      <div
+        className={
+          showFeedback
+            ? `${getFeedbackClass(message)} feedback`
+            : 'blank feedback'
+        }
+      >
+        {message}
+      </div>
     </div>
   );
 };
@@ -19,6 +21,8 @@ export default Feedback;
 
 function getFeedbackClass(message) {
   switch (message) {
+    case 'match':
+      return 'correct';
     default:
       return 'incorrect';
   }

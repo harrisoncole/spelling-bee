@@ -29,8 +29,22 @@ function swapClassNames(oldClassName, newClassName) {
   }
 }
 
+function objWithinArrIncludes(arr, key, value) {
+  for (let i = 0; i < arr.length; i++) {
+    let currentObj = arr[i];
+    if (currentObj[key] === value) return true;
+  }
+  return false;
+}
+
+function moveElementVertically(element, percentage) {
+  element.style.transform = `translate(0, ${percentage}%)`;
+}
+
 module.exports = {
   nodeWithinId,
   fischerYatesCopy,
   swapClassNames,
+  objWithinArrIncludes,
+  moveElementVertically,
 };

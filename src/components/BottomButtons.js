@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { EnterButton, DeleteButton, SwapLettersButton } from './index';
+import { moveElementVertically } from '../utils';
 import './BottomButtons.css';
 
-const BottomButtons = ({ checkWord, removeLetter, shuffleLetters }) => {
+const BottomButtons = ({
+  checkWord,
+  removeLetter,
+  shuffleLetters,
+  setFeedback,
+}) => {
   const [enterPressed, setEnterPressed] = useState(false);
   const [swapPressed, setSwapPressed] = useState(false);
   const [deletePressed, setDeletePressed] = useState(false);
+  const [horizontalPct, setHorizontalPct] = useState(-5);
 
   useEffect(() => {
     function keyDownHandler(evt) {
@@ -13,8 +20,11 @@ const BottomButtons = ({ checkWord, removeLetter, shuffleLetters }) => {
         removeLetter();
         setDeletePressed(true);
       } else if (evt.key === 'Enter') {
-        console.log(checkWord());
+        setFeedback(checkWord(), true);
         setEnterPressed(true);
+        setTimeout(() => {
+          setFeedback(null, false);
+        }, 1000);
       } else if (evt.keyCode === 32) {
         shuffleLetters();
         setSwapPressed(true);
@@ -37,7 +47,7 @@ const BottomButtons = ({ checkWord, removeLetter, shuffleLetters }) => {
       document.removeEventListener('keydown', keyDownHandler);
       document.removeEventListener('keyup', keyUpHandler);
     };
-  }, [removeLetter, checkWord, shuffleLetters]);
+  }, [removeLetter, checkWord, shuffleLetters, setFeedback]);
 
   const props = {
     enterPressed,
