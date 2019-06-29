@@ -45,7 +45,7 @@ class Game extends Component {
     super(props);
     this.state = {
       gameLetters: letterArray,
-      words: wordList,
+      answers: wordList,
       guessedWords: [],
       currentWord: [],
       invalidLetters: false,
@@ -98,12 +98,12 @@ class Game extends Component {
   }
 
   includeWord() {
-    let word = this.stringifyWord();
-    let newWords = { ...this.state.words };
-    let newGuessedWords = [...this.state.guessedWords];
-    newWords[word] = 1;
-    newGuessedWords.push(word);
-    this.setState({ words: newWords, guessedWords: newGuessedWords });
+    let currentWord = this.stringifyWord();
+    let answerList = { ...this.state.answers };
+    let guessedWords = [...this.state.guessedWords];
+    answerList[currentWord] = 1;
+    guessedWords.push(currentWord);
+    this.setState({ answers: answerList, guessedWords: guessedWords });
   }
 
   explainer() {
@@ -131,12 +131,12 @@ class Game extends Component {
   checkWord() {
     const currentWord = this.stringifyWord();
     setTimeout(() => this.clearWord(), 1000);
-    if (this.state.words[currentWord] === 0) {
+    if (this.state.answers[currentWord] === 0) {
       this.includeWord();
       this.incrementPoints();
       this.clearWord();
       return 'Nice!';
-    } else if (this.state.words[currentWord]) {
+    } else if (this.state.answers[currentWord]) {
       return 'Already found';
     }
     return this.explainer();
