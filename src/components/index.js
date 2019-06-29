@@ -13,6 +13,7 @@ import EnterButton from './EnterButton';
 import DeleteButton from './DeleteButton';
 import SwapLettersButton from './SwapLettersButton';
 import Feedback from './Feedback';
+import Score from './Score';
 
 export {
   Nav,
@@ -28,4 +29,5 @@ export {
   DeleteButton,
   SwapLettersButton,
   Feedback,
+  Score,
 };

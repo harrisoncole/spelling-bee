@@ -12,7 +12,6 @@ const BottomButtons = ({
   const [enterPressed, setEnterPressed] = useState(false);
   const [swapPressed, setSwapPressed] = useState(false);
   const [deletePressed, setDeletePressed] = useState(false);
-  const [horizontalPct, setHorizontalPct] = useState(-5);
 
   useEffect(() => {
     function keyDownHandler(evt) {

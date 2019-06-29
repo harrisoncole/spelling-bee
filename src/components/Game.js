@@ -6,6 +6,7 @@ import {
   WordBox,
   BottomButtons,
   Feedback,
+  Score,
 } from './index';
 import { swapClassNames, fischerYatesCopy, getPoints } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
@@ -204,7 +205,9 @@ class Game extends Component {
         <div className="game-right">
           <div className="score-container">
             <div>Level</div>
-            <div>Progress Bar</div>
+            <div>
+              <Score score={this.state.points} />
+            </div>
           </div>
           <WordBox words={this.state.guessedWords} />
         </div>
