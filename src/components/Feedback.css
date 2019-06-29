@@ -22,10 +22,19 @@
   color: white;
 }
 
-.correct {
-  background-color: white;
+.correct,
+.pangram {
   transform: translate(0, -10px);
   -webkit-transition: transform 0.8s linear;
   -moz-transition: transform 0.8s linear;
   transition: transform 0.8s linear;
+}
+
+.correct {
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.pangram {
+  background-color: #f8cd05;
 }

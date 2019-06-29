@@ -128,9 +128,9 @@ class Game extends Component {
     if (this.state.words[currentWord] === 0) {
       this.includeWord(currentWord);
       this.clearWord();
-      return 'match';
+      return 'Nice!';
     } else if (this.state.words[currentWord]) {
-      return 'seen';
+      return 'Already found';
     }
     return this.explainer();
   }

@@ -21,7 +21,7 @@ export default Feedback;
 
 function getFeedbackClass(message) {
   switch (message) {
-    case 'match':
+    case 'Nice!':
       return 'correct';
     default:
       return 'incorrect';
