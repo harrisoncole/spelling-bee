@@ -52,6 +52,7 @@ class Game extends Component {
       feedback: 'test',
       showFeedback: false,
       points: 0,
+      maxPoints: 0,
     };
 
     this.addLetter = this.addLetter.bind(this);
@@ -63,7 +64,7 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    // document.addEventListener('keydown', this.keyDownHandler);
+    this.setMaxPoints();
   }
 
   componentWillUnmount() {
@@ -97,7 +98,7 @@ class Game extends Component {
     this.setState({ currentWord: word });
   }
 
-  includeWord() {
+  markWordAsGuessed() {
     let currentWord = this.stringifyWord();
     let answerList = { ...this.state.answers };
     let guessedWords = [...this.state.guessedWords];
@@ -132,7 +133,7 @@ class Game extends Component {
     const currentWord = this.stringifyWord();
     setTimeout(() => this.clearWord(), 1000);
     if (this.state.answers[currentWord] === 0) {
-      this.includeWord();
+      this.markWordAsGuessed();
       this.incrementPoints();
       this.clearWord();
       return 'Nice!';
@@ -167,6 +168,22 @@ class Game extends Component {
       });
       swapClassNames('hidden', 'edge-letter');
     }, 500);
+  }
+
+  calculateMaxPoints() {
+    let max = 0;
+    for (let key in this.state.answers) {
+      if (this.state.answers.hasOwnProperty(key)) {
+        max += getPoints(key);
+      }
+    }
+    return max;
+  }
+
+  setMaxPoints() {
+    let maxPoints = this.calculateMaxPoints();
+    this.setState({ maxPoints });
+    return maxPoints;
   }
 
   render() {
