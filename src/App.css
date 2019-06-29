@@ -58,4 +58,11 @@
 
 .game-right {
   align-self: center;
+  height: 500px;
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }

@@ -1,5 +1,5 @@
 .feedback-container {
-  height: 80px;
+  height: 20px;
   display: flex;
   justify-content: center;
   opacity: 1;
@@ -15,6 +15,7 @@
 
 .blank {
   opacity: 0;
+  transform: translate(0, 35px);
 }
 
 .incorrect {
@@ -25,9 +26,9 @@
 .correct,
 .pangram {
   transform: translate(0, -10px);
-  -webkit-transition: transform 0.8s linear;
-  -moz-transition: transform 0.8s linear;
-  transition: transform 0.8s linear;
+  -webkit-transition: transform 1s linear;
+  -moz-transition: transform 1s linear;
+  transition: transform 1s linear;
 }
 
 .correct {

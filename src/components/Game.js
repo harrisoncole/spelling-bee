@@ -129,7 +129,7 @@ class Game extends Component {
   }
   checkWord() {
     const currentWord = this.stringifyWord();
-    setTimeout(() => this.clearWord(), 400);
+    setTimeout(() => this.clearWord(), 1000);
     if (this.state.words[currentWord] === 0) {
       this.includeWord();
       this.incrementPoints();
@@ -202,6 +202,10 @@ class Game extends Component {
           <BottomButtons {...props} />
         </div>
         <div className="game-right">
+          <div className="score-container">
+            <div>Level</div>
+            <div>Progress Bar</div>
+          </div>
           <WordBox words={this.state.guessedWords} />
         </div>
       </div>
