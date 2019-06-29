@@ -19,9 +19,9 @@
   text-anchor: middle;
   text-transform: uppercase;
   opacity: 1;
-  -webkit-transition: opacity 0.8s ease-in;
-  -moz-transition: opacity 0.8s ease-in;
-  transition: opacity 0.8s ease-in;
+  /* -webkit-transition: opacity 0.3s ease-in;
+  -moz-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in; */
 }
 
 .hidden {
@@ -31,7 +31,7 @@
   text-anchor: middle;
   text-transform: uppercase;
   opacity: 0;
-  -webkit-transition: opacity 0.8s ease-out;
-  -moz-transition: opacity 0.8s ease-out;
-  transition: opacity 0.8s ease-out;
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
 }

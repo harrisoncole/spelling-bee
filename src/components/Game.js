@@ -166,7 +166,7 @@ class Game extends Component {
         gameLetters: [center, ...newEdges],
       });
       swapClassNames('hidden', 'edge-letter');
-    }, 800);
+    }, 500);
   }
 
   render() {
