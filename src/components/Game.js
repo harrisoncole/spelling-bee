@@ -7,11 +7,7 @@ import {
   BottomButtons,
   Feedback,
 } from './index';
-import {
-  swapClassNames,
-  fischerYatesCopy,
-  objWithinArrIncludes,
-} from '../utils';
+import { swapClassNames, fischerYatesCopy, getPoints } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -54,6 +50,7 @@ class Game extends Component {
       invalidLetters: false,
       feedback: 'test',
       showFeedback: false,
+      points: 0,
     };
 
     this.addLetter = this.addLetter.bind(this);
@@ -86,13 +83,21 @@ class Game extends Component {
     this.setState({ currentWord: word });
   }
 
+  incrementPoints() {
+    const currentWordScore = getPoints(this.stringifyWord());
+    this.setState({
+      points: this.state.points + currentWordScore,
+    });
+  }
+
   removeLetter() {
     const word = [...this.state.currentWord];
     word.pop();
     this.setState({ currentWord: word });
   }
 
-  includeWord(word) {
+  includeWord() {
+    let word = this.stringifyWord();
     let newWords = { ...this.state.words };
     let newGuessedWords = [...this.state.guessedWords];
     newWords[word] = 1;
@@ -101,12 +106,12 @@ class Game extends Component {
   }
 
   explainer() {
-    const currentWord = this.state.currentWord;
+    const currentWord = this.stringifyWord();
     if (currentWord.length <= 3) {
       return 'Too short';
     } else if (this.state.invalidLetters) {
       return 'Bad letters';
-    } else if (!objWithinArrIncludes(currentWord, 'class', 'center-letter')) {
+    } else if (!currentWord.includes(this.state.gameLetters[0])) {
       return 'Missing center letter';
     } else {
       return 'Not in word list';
@@ -126,7 +131,8 @@ class Game extends Component {
     const currentWord = this.stringifyWord();
     setTimeout(() => this.clearWord(), 400);
     if (this.state.words[currentWord] === 0) {
-      this.includeWord(currentWord);
+      this.includeWord();
+      this.incrementPoints();
       this.clearWord();
       return 'Nice!';
     } else if (this.state.words[currentWord]) {

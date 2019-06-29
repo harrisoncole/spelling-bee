@@ -29,22 +29,30 @@ function swapClassNames(oldClassName, newClassName) {
   }
 }
 
-function objWithinArrIncludes(arr, key, value) {
-  for (let i = 0; i < arr.length; i++) {
-    let currentObj = arr[i];
-    if (currentObj[key] === value) return true;
+function getUniqueLetters(word) {
+  const seen = new Set();
+  let result = '';
+  for (let i = 0; i < word.length; i++) {
+    let currentLetter = word[i];
+    if (!seen.has(currentLetter)) {
+      result += currentLetter;
+    }
+    seen.add(currentLetter);
   }
-  return false;
+  return result;
 }
 
-function moveElementVertically(element, percentage) {
-  element.style.transform = `translate(0, ${percentage}%)`;
+function getPoints(word) {
+  let points = 1 + word.length - 4;
+  if (getUniqueLetters(word).length === 7) {
+    points += 7;
+  }
+  return points;
 }
 
 module.exports = {
   nodeWithinId,
   fischerYatesCopy,
   swapClassNames,
-  objWithinArrIncludes,
-  moveElementVertically,
+  getPoints,
 };
