@@ -66,3 +66,8 @@
   justify-content: space-between;
   margin-top: 10px;
 }
+
+.outer-feedback-container {
+  display: flex;
+  justify-content: center;
+}
