@@ -2,7 +2,7 @@ import React from 'react';
 import './Feedback.css';
 import { WordScore } from './index';
 
-const Feedback = ({ message, showFeedback }) => {
+const Feedback = ({ lastWordScore, message, showFeedback }) => {
   return (
     <div className="outer-feedback-container">
       <div className="feedback-container">
@@ -18,7 +18,7 @@ const Feedback = ({ message, showFeedback }) => {
       </div>
       <WordScore
         showWordScore={showFeedback && message === 'Nice!'}
-        score="5"
+        score={lastWordScore}
       />
     </div>
   );

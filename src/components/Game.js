@@ -7,7 +7,6 @@ import {
   BottomButtons,
   Feedback,
   TotalScore,
-  WordScore,
 } from './index';
 import { swapClassNames, fischerYatesCopy, getPoints } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
@@ -53,6 +52,7 @@ class Game extends Component {
       feedback: 'test',
       showFeedback: false,
       points: 0,
+      lastWordScore: 0,
       maxPoints: 0,
     };
 
@@ -89,6 +89,7 @@ class Game extends Component {
   incrementPoints() {
     const currentWordScore = getPoints(this.stringifyWord());
     this.setState({
+      lastWordScore: currentWordScore,
       points: this.state.points + currentWordScore,
     });
   }
@@ -212,13 +213,8 @@ class Game extends Component {
           <Feedback
             message={this.state.feedback}
             showFeedback={this.state.showFeedback}
+            lastWordScore={this.state.lastWordScore}
           />
-          {/* <WordScore
-              showWordScore={
-                this.state.showFeedback && this.state.feedback === 'Nice!'
-              }
-              score={this.state.points}
-            /> */}
           <div className="entry-container">
             <EntryBar {...props} {...this.state} />
             <Cursor {...props} />
