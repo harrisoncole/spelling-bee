@@ -1,3 +1,7 @@
+.outer-feedback-container {
+  height: 10px;
+}
+
 .feedback-container {
   flex: 1;
   height: 20px;

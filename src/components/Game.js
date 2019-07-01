@@ -8,7 +8,7 @@ import {
   Feedback,
   TotalScore,
 } from './index';
-import { swapClassNames, fischerYatesCopy, getPoints } from '../utils';
+import { swapClassNames, getPoints } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -54,6 +54,7 @@ class Game extends Component {
       points: 0,
       lastWordScore: 0,
       maxPoints: 0,
+      rank: 'beginner',
     };
 
     this.addLetter = this.addLetter.bind(this);
@@ -237,3 +238,17 @@ class Game extends Component {
 }
 
 export default Game;
+
+function fischerYatesCopy(arr) {
+  const copy = [...arr];
+  let pointer = arr.length,
+    temp,
+    idx;
+  while (pointer) {
+    idx = Math.floor(Math.random() * pointer--);
+    temp = copy[pointer];
+    copy[pointer] = copy[idx];
+    copy[idx] = temp;
+  }
+  return copy;
+}
