@@ -1,4 +1,5 @@
 .feedback-container {
+  flex: 1;
   height: 20px;
   display: flex;
   justify-content: center;
@@ -10,12 +11,14 @@
   border: 1px solid black;
   padding: 5px;
   border-radius: 4px;
-  align-self: flex-start;
+  align-self: center;
+  justify-self: center;
 }
 
 .blank {
   opacity: 0;
-  transform: translate(0, 35px);
+  width: 50px;
+  transform: translate(0, 10px);
 }
 
 .incorrect {

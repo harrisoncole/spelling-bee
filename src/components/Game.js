@@ -197,6 +197,7 @@ class Game extends Component {
       clearWord: this.clearWord,
       shuffleLetters: this.shuffleLetters,
       setFeedback: this.setFeedback,
+      score: this.state.points,
     };
 
     return (
@@ -208,18 +209,16 @@ class Game extends Component {
         }
       >
         <div className="game-left">
-          <div className="outer-feedback-container">
-            <Feedback
-              message={this.state.feedback}
-              showFeedback={this.state.showFeedback}
-            />
-            <WordScore
+          <Feedback
+            message={this.state.feedback}
+            showFeedback={this.state.showFeedback}
+          />
+          {/* <WordScore
               showWordScore={
                 this.state.showFeedback && this.state.feedback === 'Nice!'
               }
               score={this.state.points}
-            />
-          </div>
+            /> */}
           <div className="entry-container">
             <EntryBar {...props} {...this.state} />
             <Cursor {...props} />

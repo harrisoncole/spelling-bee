@@ -1,10 +1,20 @@
+.no-score,
+.word-score {
+  text-align: right;
+  padding-right: 30%;
+  padding-bottom: 5px;
+}
+
 .no-score {
-  display: inline-block;
-  align-self: flex-start;
   color: white;
+  transform: translate(0, -15px);
 }
 
 .word-score {
+  color: black;
   font-weight: bold;
-  align-self: flex-start;
+  transform: translate(0, -30px);
+  -webkit-transition: transform 1s linear;
+  -moz-transition: transform 1s linear;
+  transition: transform 1s linear;
 }
