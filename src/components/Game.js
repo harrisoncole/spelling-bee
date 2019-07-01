@@ -8,7 +8,7 @@ import {
   Feedback,
   TotalScore,
 } from './index';
-import { swapClassNames, getPoints } from '../utils';
+import { swapClassNames, getPoints, fischerYatesCopy } from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -54,7 +54,7 @@ class Game extends Component {
       points: 0,
       lastWordScore: 0,
       maxPoints: 0,
-      rank: 'beginner',
+      rank: 'Beginner',
     };
 
     this.addLetter = this.addLetter.bind(this);
@@ -66,7 +66,7 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    this.setMaxPoints();
+    console.log(this.setMaxPoints());
   }
 
   componentWillUnmount() {
@@ -138,6 +138,7 @@ class Game extends Component {
     if (this.state.answers[currentWord] === 0) {
       this.markWordAsGuessed();
       this.incrementPoints();
+      this.setRank();
       this.clearWord();
       return 'Nice!';
     } else if (this.state.answers[currentWord]) {
@@ -189,6 +190,23 @@ class Game extends Component {
     return maxPoints;
   }
 
+  determineRank() {
+    let pointPercentage = this.state.points / this.state.maxPoints;
+    console.log(pointPercentage);
+    if (pointPercentage > 0.7) return 'Genius';
+    if (pointPercentage > 0.6) return 'Amazing';
+    if (pointPercentage > 0.5) return 'Great';
+    if (pointPercentage > 0.3) return 'Nice';
+    if (pointPercentage > 0.2) return 'Solid';
+    if (pointPercentage > 0.1) return 'Good';
+    if (pointPercentage > 0.05) return 'Moving up';
+    if (pointPercentage > 0) return 'Good start';
+  }
+
+  setRank() {
+    this.setState({ rank: this.determineRank() });
+  }
+
   render() {
     const props = {
       displayInstructions: this.props.displayInstructions,
@@ -225,7 +243,7 @@ class Game extends Component {
         </div>
         <div className="game-right">
           <div className="score-container">
-            <div>Level</div>
+            <div>{this.state.rank}</div>
             <div>
               <TotalScore score={this.state.points} />
             </div>
@@ -238,17 +256,3 @@ class Game extends Component {
 }
 
 export default Game;
-
-function fischerYatesCopy(arr) {
-  const copy = [...arr];
-  let pointer = arr.length,
-    temp,
-    idx;
-  while (pointer) {
-    idx = Math.floor(Math.random() * pointer--);
-    temp = copy[pointer];
-    copy[pointer] = copy[idx];
-    copy[idx] = temp;
-  }
-  return copy;
-}
