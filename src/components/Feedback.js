@@ -17,7 +17,9 @@ const Feedback = ({ lastWordScore, message, showFeedback }) => {
         </div>
       </div>
       <WordScore
-        showWordScore={showFeedback && message === 'Nice!'}
+        showWordScore={
+          showFeedback && getFeedbackClass(message) !== 'incorrect'
+        }
         score={lastWordScore}
       />
     </div>
@@ -27,10 +29,12 @@ const Feedback = ({ lastWordScore, message, showFeedback }) => {
 export default Feedback;
 
 function getFeedbackClass(message) {
-  switch (message) {
-    case 'Nice!':
-      return 'correct';
-    default:
-      return 'incorrect';
+  if (message === 'Nice!' || message === 'Good!') {
+    return 'correct';
   }
+
+  if (message === 'Pangram!') {
+    return 'pangram';
+  }
+  return 'incorrect';
 }

@@ -44,5 +44,6 @@
 }
 
 .pangram {
+  border: 1px solid #f8cd05;
   background-color: #f8cd05;
 }

@@ -6,15 +6,15 @@
 }
 
 .no-score {
-  opacity: 0;
+  opacity: 1;
   color: white;
-  transform: translate(0, -15px);
+  transform: translate(10px, -15px);
 }
 
 .word-score {
   color: black;
   font-weight: bold;
-  transform: translate(0, -30px);
+  transform: translate(10px, -30px);
   -webkit-transition: transform 1s linear;
   -moz-transition: transform 1s linear;
   transition: transform 1s linear;
