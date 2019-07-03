@@ -1,9 +1,15 @@
 .score {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f8cd05;
   border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  text-align: center;
+  width: 20px;
+  height: 20px;
   padding: 5px;
+  z-index: 10;
+}
+
+.score-amount {
+  text-align: center;
 }

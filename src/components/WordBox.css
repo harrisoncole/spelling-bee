@@ -1,8 +1,14 @@
 .word-box {
+  margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   height: 300px;
   width: 400px;
+}
+
+.word-box-status {
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .word-box.dim {

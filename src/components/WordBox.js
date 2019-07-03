@@ -4,7 +4,7 @@ import './WordBox.css';
 const WordBox = ({ words, displayInstructions }) => {
   return (
     <div className="word-box">
-      <div>
+      <div className="word-box-status">
         {' '}
         You have found {words.length} {words.length === 1 ? 'word' : 'words'}.
       </div>

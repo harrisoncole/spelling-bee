@@ -18,6 +18,7 @@ const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
   coconut: 0,
+  cunt: 0,
   cocoon: 0,
   common: 0,
   conch: 0,

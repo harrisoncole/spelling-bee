@@ -2,7 +2,11 @@ import React from 'react';
 import './TotalScore.css';
 
 const TotalScore = ({ score }) => {
-  return <span className="score">{score}</span>;
+  return (
+    <div className="score">
+      <div className="score-amount">{score}</div>
+    </div>
+  );
 };
 
 export default TotalScore;
