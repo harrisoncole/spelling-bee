@@ -8,7 +8,12 @@ import {
   Feedback,
   TotalScore,
 } from './index';
-import { swapClassNames, getPoints, fischerYatesCopy } from '../utils';
+import {
+  swapClassNames,
+  getPoints,
+  fischerYatesCopy,
+  getUniqueLetters,
+} from '../utils';
 const letterArray = ['n', 'h', 'm', 'o', 't', 'u', 'c'];
 const wordList = {
   cottonmouth: 0,
@@ -110,7 +115,7 @@ class Game extends Component {
     this.setState({ answers: answerList, guessedWords: guessedWords });
   }
 
-  explainer() {
+  getNegativeFeedback() {
     const currentWord = this.stringifyWord();
     if (currentWord.length <= 3) {
       return 'Too short';
@@ -121,6 +126,14 @@ class Game extends Component {
     } else {
       return 'Not in word list';
     }
+  }
+
+  getPositiveFeedback() {
+    let currentWord = this.stringifyWord();
+    let currentPoints = getPoints(currentWord);
+    if (currentPoints === 4) return 'Good!';
+    if (getUniqueLetters(currentWord).length === 7) return 'Pangram!';
+    return 'Nice!';
   }
 
   stringifyWord() {
@@ -138,13 +151,14 @@ class Game extends Component {
     if (this.state.answers[currentWord] === 0) {
       this.markWordAsGuessed();
       this.incrementPoints();
+      let positiveFeedback = this.getPositiveFeedback();
       this.setRank();
       this.clearWord();
-      return 'Nice!';
+      return positiveFeedback;
     } else if (this.state.answers[currentWord]) {
       return 'Already found';
     }
-    return this.explainer();
+    return this.getNegativeFeedback();
   }
 
   clearWord() {
@@ -192,7 +206,6 @@ class Game extends Component {
 
   determineRank() {
     let pointPercentage = this.state.points / this.state.maxPoints;
-    console.log(pointPercentage);
     if (pointPercentage > 0.7) return 'Genius';
     if (pointPercentage > 0.6) return 'Amazing';
     if (pointPercentage > 0.5) return 'Great';
