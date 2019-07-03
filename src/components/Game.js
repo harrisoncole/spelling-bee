@@ -79,32 +79,81 @@ class Game extends Component {
     // document.removeEventListener('keydown', this.keyDownHandler);
   }
 
-  addLetter(newLetter) {
-    const letters = this.state.gameLetters;
-    const word = [...this.state.currentWord];
-    const letterObj = { letter: newLetter, class: 'edge' };
-    if (newLetter === letters[0]) {
-      letterObj.class = 'center-letter';
-    } else if (!letters.includes(newLetter)) {
-      letterObj.class = 'non-letter';
-      this.setState({ invalidLetters: true });
+  setMaxPoints() {
+    let maxPoints = this.calculateMaxPoints();
+    this.setState({ maxPoints });
+    return maxPoints;
+  }
+
+  calculateMaxPoints() {
+    let max = 0;
+    for (let key in this.state.answers) {
+      if (this.state.answers.hasOwnProperty(key)) {
+        max += getPoints(key);
+      }
     }
+    return max;
+  }
+
+  addLetter(newLetter) {
+    const word = [...this.state.currentWord];
+    const letterObj = this.createLetterObject(newLetter);
     word.push(letterObj);
     this.setState({ currentWord: word });
   }
 
-  incrementPoints() {
-    const currentWordScore = getPoints(this.stringifyWord());
-    this.setState({
-      lastWordScore: currentWordScore,
-      points: this.state.points + currentWordScore,
+  createLetterObject(letter) {
+    const letters = this.state.gameLetters;
+    const letterObj = { letter: letter, class: 'edge' };
+    if (letter === letters[0]) {
+      letterObj.class = 'center-letter';
+    } else if (!letters.includes(letter)) {
+      letterObj.class = 'non-letter';
+      this.setState({ invalidLetters: true });
+    }
+    return letterObj;
+  }
+
+  stringifyWord() {
+    const wordArray = this.state.currentWord;
+    let resultWord = '';
+    wordArray.forEach(word => {
+      resultWord += word.letter;
     });
+    return resultWord;
   }
 
   removeLetter() {
     const word = [...this.state.currentWord];
     word.pop();
     this.setState({ currentWord: word });
+  }
+
+  checkWord() {
+    const currentWord = this.stringifyWord();
+    setTimeout(() => this.clearWord(), 1000);
+    if (this.state.answers[currentWord] === 0) {
+      let positiveFeedback = this.getPositiveFeedback();
+      this.establishCorrectWord();
+      return positiveFeedback;
+    } else if (this.state.answers[currentWord]) {
+      return 'Already found';
+    }
+    return this.getNegativeFeedback();
+  }
+
+  clearWord() {
+    this.setState({
+      invalidLetters: false,
+      currentWord: [],
+    });
+  }
+
+  establishCorrectWord() {
+    this.markWordAsGuessed();
+    this.incrementPoints();
+    this.setRank();
+    this.clearWord();
   }
 
   markWordAsGuessed() {
@@ -114,6 +163,14 @@ class Game extends Component {
     answerList[currentWord] = 1;
     guessedWords.push(currentWord);
     this.setState({ answers: answerList, guessedWords: guessedWords });
+  }
+
+  incrementPoints() {
+    const currentWordScore = getPoints(this.stringifyWord());
+    this.setState({
+      lastWordScore: currentWordScore,
+      points: this.state.points + currentWordScore,
+    });
   }
 
   getNegativeFeedback() {
@@ -137,36 +194,20 @@ class Game extends Component {
     return 'Nice!';
   }
 
-  stringifyWord() {
-    const wordArray = this.state.currentWord;
-    let resultWord = '';
-    wordArray.forEach(word => {
-      resultWord += word.letter;
-    });
-
-    return resultWord;
-  }
-  checkWord() {
-    const currentWord = this.stringifyWord();
-    setTimeout(() => this.clearWord(), 1000);
-    if (this.state.answers[currentWord] === 0) {
-      this.markWordAsGuessed();
-      this.incrementPoints();
-      let positiveFeedback = this.getPositiveFeedback();
-      this.setRank();
-      this.clearWord();
-      return positiveFeedback;
-    } else if (this.state.answers[currentWord]) {
-      return 'Already found';
-    }
-    return this.getNegativeFeedback();
+  setRank() {
+    this.setState({ rank: this.determineRank() });
   }
 
-  clearWord() {
-    this.setState({
-      invalidLetters: false,
-      currentWord: [],
-    });
+  determineRank() {
+    let pointPercentage = this.state.points / this.state.maxPoints;
+    if (pointPercentage > 0.7) return 'Genius';
+    if (pointPercentage > 0.6) return 'Amazing';
+    if (pointPercentage > 0.5) return 'Great';
+    if (pointPercentage > 0.3) return 'Nice';
+    if (pointPercentage > 0.2) return 'Solid';
+    if (pointPercentage > 0.1) return 'Good';
+    if (pointPercentage > 0.05) return 'Moving up';
+    if (pointPercentage > 0) return 'Good start';
   }
 
   setFeedback(message, showBool) {
@@ -187,38 +228,6 @@ class Game extends Component {
       });
       swapClassNames('hidden', 'edge-letter');
     }, 500);
-  }
-
-  calculateMaxPoints() {
-    let max = 0;
-    for (let key in this.state.answers) {
-      if (this.state.answers.hasOwnProperty(key)) {
-        max += getPoints(key);
-      }
-    }
-    return max;
-  }
-
-  setMaxPoints() {
-    let maxPoints = this.calculateMaxPoints();
-    this.setState({ maxPoints });
-    return maxPoints;
-  }
-
-  determineRank() {
-    let pointPercentage = this.state.points / this.state.maxPoints;
-    if (pointPercentage > 0.7) return 'Genius';
-    if (pointPercentage > 0.6) return 'Amazing';
-    if (pointPercentage > 0.5) return 'Great';
-    if (pointPercentage > 0.3) return 'Nice';
-    if (pointPercentage > 0.2) return 'Solid';
-    if (pointPercentage > 0.1) return 'Good';
-    if (pointPercentage > 0.05) return 'Moving up';
-    if (pointPercentage > 0) return 'Good start';
-  }
-
-  setRank() {
-    this.setState({ rank: this.determineRank() });
   }
 
   render() {
