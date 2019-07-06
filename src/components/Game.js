@@ -7,6 +7,7 @@ import {
   BottomButtons,
   Feedback,
   TotalScore,
+  ScoreBar,
 } from './index';
 import {
   swapClassNames,
@@ -267,9 +268,10 @@ class Game extends Component {
         <div className="game-right">
           <div className="score-container">
             <div>{this.state.rank}</div>
-            <div>
-              <TotalScore score={this.state.points} />
-            </div>
+            {/* <div> */}
+            {/* <TotalScore score={this.state.points} /> */}
+            <ScoreBar score={this.state.points} />
+            {/* </div> */}
           </div>
           <WordBox words={this.state.guessedWords} />
         </div>

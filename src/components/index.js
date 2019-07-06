@@ -15,6 +15,7 @@ import SwapLettersButton from './SwapLettersButton';
 import Feedback from './Feedback';
 import TotalScore from './TotalScore';
 import WordScore from './WordScore';
+import ScoreBar from './ScoreBar';
 
 export {
   Nav,
@@ -32,4 +33,5 @@ export {
   Feedback,
   TotalScore,
   WordScore,
+  ScoreBar,
 };

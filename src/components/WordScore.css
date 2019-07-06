@@ -8,7 +8,7 @@
 .no-score {
   opacity: 1;
   color: white;
-  transform: translate(20px, -15px);
+  transform: translate(40px, -15px);
 }
 
 .word-score {
