@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  top: -30px;
+  top: -5px;
 }
 .dot {
   position: relative;
