@@ -1,9 +1,8 @@
 .outer-feedback-container {
-  height: 10px;
+  height: 20px;
 }
 
 .feedback-container {
-  flex: 1;
   height: 20px;
   display: flex;
   justify-content: center;
@@ -30,8 +29,9 @@
   color: white;
 }
 
-.correct,
-.pangram {
+.correct-mvmt,
+.pangram-mvmt {
+  margin-right: 8px;
   transform: translate(0, -10px);
   -webkit-transition: transform 1s linear;
   -moz-transition: transform 1s linear;
@@ -46,4 +46,9 @@
 .pangram {
   border: 1px solid #f8cd05;
   background-color: #f8cd05;
+}
+
+.correct,
+.pangram {
+  margin-right: 5px;
 }

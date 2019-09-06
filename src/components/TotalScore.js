@@ -25,7 +25,7 @@ function effectGenerator() {
       let prevDot = dotArray[counter++];
       prevDot.style.backgroundColor = '#f8cd05';
       let nextDot = dotArray[counter];
-      score.style.left = nextDot.offsetLeft - 5 + 'px';
+      score.style.left = nextDot.offsetLeft - 6 + 'px';
     }
   };
 }
