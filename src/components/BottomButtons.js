@@ -55,6 +55,7 @@ const BottomButtons = ({
     checkWord,
     removeLetter,
     shuffleLetters,
+    setFeedback,
   };
   return (
     <div className="bottom-buttons">
